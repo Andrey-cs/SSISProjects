@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1016</width>
+    <height>664</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Styles for the titleFrame element */
+#titleFrame {
+  background-color: transparent;
+}
+
+/* TEXT SIZE AND COLOR */
+QLabel {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+/* FORM FRAME */
+#Form { 
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                                stop:0 #800000, /* Dark Maroon */
+                                stop:1 #A52A2A); /* Brownish Maroon */
+    color: black;
+}
+
+
+/* INFO FRAME BG COLOR */
+#infoFrame {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, 
+                                stop:0 #FFD54F, stop:1 #FFB300);
+    border-radius: 10px;
+}
+
+
+QLabel {
+    color: #800000;  /* Yellow Text */
+    font-weight: bold;
+}
+
+QLineEdit {
+    background-color: white;
+    color: black;
+    border: 2px solid #800000;  /* Yellow Border */
+    padding: 3px;
+    border-radius: 5px;
+}
+
+
+/* INPUT FIELDS HEIGHT */
+QLineEdit, QComboBox {
+    height: 25px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+
+/* Styles for the functionFrame and its elements */
+#functionFrame {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+}
+
+/* FOR PUSH BUTTONS */
+
+/* Buttons with Yellow Background and White Text */
+QPushButton {
+     background-color: #FFC107; /* Yellow */
+    color: #800000;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+/* Hover effect for buttons (Darker Yellow) */
+QPushButton:hover {
+    background-color: #FFA000; /* Darker Amber Yellow */
+}
+
+QPushButton {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+QPushButton {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QComboBox {
+  color: white;
+}
+
+QComboBox {
+    border: none;
+    color: #800000; /* Change text color if needed */
+}
+
+
+
+/* TABLE */
+QTableWidget QHeaderView::section {
+    background-color: #FFC107;  /* Goldish Yellow */
+    color: #800000;             /* Maroon Text */
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #800000;  /* Maroon Border */
+}
+
+QTableWidget {
+    background-color: white;       /* Clean base */
+    alternate-background-color: #FFEBB5;  /* Soft pastel yellow */
+    gridline-color: #800000;        /* Maroon grid */
+    border-radius: 5px;
+}
+
+QTableWidget::item {
+    color: black;              /* Text should be readable */
+    font-size: 13px;
+    padding: 4px;
+}
+
+QTableWidget::item {
+    background: #FFD54F; /* Same as header */
+    color: black;
+}
+
+
+QTableWidget::item:selected {
+    background-color: #800000; /* Deep red (highlights selected row) */
+    color: white;              /* White text for readability */
+}
+
+QTableWidget {
+    background-color: white; /* Match your form's background */
+    gridline-color: #dark-yellow;
+    alternate-background-color: #yellow;
+}
+QTableWidget::item {
+    background-color: #yellow;
+}
+QTableWidget::item:alternate {
+    background-color: #dark-yellow;
+}
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <widget class="QFrame" name="titleFrame">
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>Rockwell</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #FFC107;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Student Information System&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QFrame" name="infoFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>15</number>
+      </property>
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>10</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>15</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>STUDENT ID #</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>FIRST NAME</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="lineEdit_2"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>LAST NAME</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_3"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>AGE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="lineEdit_4"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="horizontalSpacing">
+         <number>10</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>15</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>SEX</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>N/A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MALE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>FEMALE</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>PROGRAM</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="comboBox_2">
+          <item>
+           <property name="text">
+            <string>N/A</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSBIO-BOT - BS Biology (Botany)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSBIO-ZOO - BS Biology (Zoology)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSMATH - BS Mathematics</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSCS - BS Computer Science</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSIT - BS Information Technology</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSIS - BS Information Systems</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSCHE - BS Chemical Engineering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSCE - BS Civil Engineering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSCPE - BS Computer Engineering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSEE - BS Electrical Engineering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSECE - BS Electronics and Communication Engineering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BAELS - BA English Language Studies</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BAFIL - BA Filipino</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BAPOLSCI - BA Political Science</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BAPSY - BA Psychology</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSPSY - BS Psychology</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSEDBIO - BSED Biology</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSEDCHEM - BSED Chemistry</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSEDPHYS - BSED Physics</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSEDMATH - BSED Mathematics</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BPED - Bachelor of Physical Education</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSA - BS Accountancy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSBA-BE - BSBA in Business Economics</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSHM - BS Hospitality Management</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>BSN - BS Nursing</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>YEAR LEVEL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="lineEdit_5"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_9">
+          <property name="font">
+           <font>
+            <family>Century Gothic</family>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #800000;</string>
+          </property>
+          <property name="text">
+           <string>COLLEGE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="lineEdit_6">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QFrame" name="functionFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>ADD</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/add_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/add_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>UPDATE</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/refresh_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/refresh_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>DELETE</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/delete_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/delete_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>CLEAR</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/backspace_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/backspace_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>EDIT</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/edit_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/edit_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QFrame" name="frame_5">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="font">
+         <font>
+          <family>Century Gothic</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>READ</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/visibility_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</normaloff>Icons/visibility_24dp_800000_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <family>Rockwell</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #FFC107;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;L I S T&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QFrame" name="tableFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="dragEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>50</number>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>120</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>STUDENT ID #</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>FIRST NAME</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>LAST NAME</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>AGE</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>SEX</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>PROGRAM</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>YEAR LEVEL</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>COLLEGE</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>10</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
