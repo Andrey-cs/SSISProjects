@@ -35,11 +35,10 @@ class StudentInformationSystem(tk.Tk):
         self.accent_color = "#00BFFF"
         self.text_color = "#FFFFFF"
         self.entry_bg = "#2D2D2D"
-        self.hover_color = "#3A3A3A"
         
         # Fonts for UI
         try:
-            self.title_font = tkfont.Font(family="Montserrat", size=25, weight="bold")
+            self.title_font = tkfont.Font(family="Montserrat", size=18, weight="bold")
             self.label_font = tkfont.Font(family="Segoe UI", size=10, weight="bold")
             self.button_font = tkfont.Font(family="Segoe UI", size=10)
         except:
@@ -78,6 +77,7 @@ class StudentInformationSystem(tk.Tk):
                       foreground=[('selected', self.text_color)])
         
     def create_widgets(self):
+        """Create all UI widgets"""
         # Title Frame
         title_frame = ttk.Frame(self)
         title_frame.pack(pady=10)
@@ -92,12 +92,11 @@ class StudentInformationSystem(tk.Tk):
         self.notebook.pack(fill='both', expand=True, padx=10, pady=5)
         
         # Students Tab
-        self.create_students_tab()     
+        self.create_students_tab()
         # Programs Tab
         self.create_programs_tab()
         
     def create_students_tab(self):
-        """Create students tab with all widgets"""
         tab = ttk.Frame(self.notebook)
         self.notebook.add(tab, text="Students")
         
@@ -130,6 +129,7 @@ class StudentInformationSystem(tk.Tk):
         self.year_combobox = ttk.Combobox(input_frame, values=["1", "2", "3", "4"], state='readonly')
         self.year_combobox.grid(row=2, column=3, padx=5, pady=5, sticky='ew')
         
+        # Buttons
         button_frame = ttk.Frame(tab)
         button_frame.pack(fill='x', padx=10, pady=5)
         
@@ -167,7 +167,6 @@ class StudentInformationSystem(tk.Tk):
         self.student_tree.bind('<Double-1>', lambda e: self.edit_student())
         
     def create_programs_tab(self):
-        """Create programs tab with all widgets"""
         tab = ttk.Frame(self.notebook)
         self.notebook.add(tab, text="Programs")
         
@@ -214,7 +213,6 @@ class StudentInformationSystem(tk.Tk):
         self.program_tree.bind('<Double-1>', lambda e: self.edit_program())
         
     def refresh_student_table(self):
-        """Refresh student table with current data"""
         for item in self.student_tree.get_children():
             self.student_tree.delete(item)
             
@@ -232,7 +230,6 @@ class StudentInformationSystem(tk.Tk):
         self.program_combobox['values'] = [p['Program Code'] for p in programs.get_all()]
         
     def refresh_program_table(self):
-        """Refresh program table with current data"""
         for item in self.program_tree.get_children():
             self.program_tree.delete(item)
             
@@ -243,11 +240,9 @@ class StudentInformationSystem(tk.Tk):
             ))
     
     def new_student(self):
-        """Open new student dialog"""
         StudentInfo(self, 'new')
         
     def edit_student(self):
-        """Edit selected student"""
         selected = self.student_tree.selection()
         if not selected:
             messagebox.showwarning("Warning", "Please select a student first")
@@ -258,7 +253,6 @@ class StudentInformationSystem(tk.Tk):
         StudentInfo(self, 'edit', student_data)
         
     def delete_student(self):
-        """Delete selected student"""
         selected = self.student_tree.selection()
         if not selected:
             messagebox.showwarning("Warning", "Please select a student first")
@@ -270,7 +264,6 @@ class StudentInformationSystem(tk.Tk):
             self.refresh_student_table()
         
     def clear_fields(self):
-        """Clear all student input fields"""
         self.student_id_entry.delete(0, 'end')
         self.first_name_entry.delete(0, 'end')
         self.last_name_entry.delete(0, 'end')
@@ -280,11 +273,9 @@ class StudentInformationSystem(tk.Tk):
         self.student_tree.selection_remove(self.student_tree.selection())
         
     def new_program(self):
-        """Open new program dialog"""
         ProgramInfo(self, 'new')
         
     def edit_program(self):
-        """Edit selected program"""
         selected = self.program_tree.selection()
         if not selected:
             messagebox.showwarning("Warning", "Please select a program first")
@@ -295,7 +286,6 @@ class StudentInformationSystem(tk.Tk):
         ProgramInfo(self, 'edit', program_data)
         
     def delete_program(self):
-        """Delete selected program"""
         selected = self.program_tree.selection()
         if not selected:
             messagebox.showwarning("Warning", "Please select a program first")
@@ -315,7 +305,6 @@ class StudentInformationSystem(tk.Tk):
             self.refresh_student_table()
         
     def clear_program_fields(self):
-        """Clear all program input fields"""
         self.program_code_entry.delete(0, 'end')
         self.program_name_entry.delete(0, 'end')
         self.program_tree.selection_remove(self.program_tree.selection())
