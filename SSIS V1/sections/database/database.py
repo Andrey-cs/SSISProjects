@@ -8,19 +8,16 @@ class database:
         self.initialize()
 
     def initialize(self):
-        """Create CSV file with headers if it doesn't exist."""
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)  
         if not os.path.exists(self.filename):
             df = pd.DataFrame(columns=self.columns)
             df.to_csv(self.filename, index=False)
 
     def get_all(self):
-        """Return all records as a list of dictionaries."""
         df = pd.read_csv(self.filename)
         return df.to_dict('records')
 
     def check(self, id_to_check):
-        """Check if a record with the given ID exists (case-insensitive)."""
         df = pd.read_csv(self.filename)
         return (df[self.columns[0]].str.upper() == id_to_check.upper()).any()  
 
@@ -52,7 +49,7 @@ class database:
         df = df[df[key_column] != id_to_remove]
         df.to_csv(self.filename, index=False)
 
-# Initialize databases with YOUR column names
+
 programs = database('programsInfo', ["Program Code", "Program Name"])
 colleges = database('collegesInfo', ["College Code", "College Name"])
 students = database('studentsInfo', ["ID", "First Name", "Last Name", "Sex", "Age", "Program Code", "Year Level"])
