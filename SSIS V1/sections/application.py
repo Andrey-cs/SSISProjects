@@ -11,11 +11,7 @@ class StudentInformationSystem(tk.Tk):
         self.geometry("1000x600")
         self.resizable(False, False)
         self.configure(bg="#121212")
-        
-        # Center window
         self.center_window()
-        
-        # Initialize styles
         self.setup_styles()
         self.create_widgets()
         self.refresh_student_table()
@@ -33,7 +29,7 @@ class StudentInformationSystem(tk.Tk):
         self.style = ttk.Style()
         self.style.theme_use('clam')
         
-        # Colors
+        # Colors for UI
         self.bg_color = "#121212"
         self.card_color = "#1E1E1E"
         self.accent_color = "#00BFFF"
@@ -41,7 +37,7 @@ class StudentInformationSystem(tk.Tk):
         self.entry_bg = "#2D2D2D"
         self.hover_color = "#3A3A3A"
         
-        # Fonts
+        # Fonts for UI
         try:
             self.title_font = tkfont.Font(family="Montserrat", size=25, weight="bold")
             self.label_font = tkfont.Font(family="Segoe UI", size=10, weight="bold")
@@ -51,7 +47,7 @@ class StudentInformationSystem(tk.Tk):
             self.label_font = tkfont.Font(size=10, weight="bold")
             self.button_font = tkfont.Font(size=10)
         
-        # Configure styles
+        # Configuring the Styles
         self.style.configure("TFrame", background=self.bg_color)
         self.style.configure("TLabel", background=self.bg_color, foreground=self.text_color, font=self.label_font)
         self.style.configure("TButton", 
@@ -96,8 +92,7 @@ class StudentInformationSystem(tk.Tk):
         self.notebook.pack(fill='both', expand=True, padx=10, pady=5)
         
         # Students Tab
-        self.create_students_tab()
-        
+        self.create_students_tab()     
         # Programs Tab
         self.create_programs_tab()
         
