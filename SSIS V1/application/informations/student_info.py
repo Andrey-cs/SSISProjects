@@ -110,15 +110,8 @@ class StudentInfo(ttk.Toplevel):
     def create_button_callback(self):
         stud_id = self.id_entry.get().strip()
         firstname = self.firstname_entry.get().strip()
-        lastname = self.lastname_entry.get().strip()
-        
-        # For sex, if in 'edit' mode and disabled, get its current value.
-        # If in 'new' mode, get from combobox.
-        sex = self.sex_option.get() # This will get the current value even if disabled
-                                    # Or, if we want to be absolutely sure it doesn't change
-                                    # during edit, we could use self.data.get("SEX") for edit mode.
-                                    # However, .get() on the widget is fine.
-
+        lastname = self.lastname_entry.get().strip(
+        sex = self.sex_option.get()
         program_code = self.program_option.get()
         year_level = self.yearlevel_option.get()
 
