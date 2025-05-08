@@ -46,7 +46,7 @@ class StudentInfo(ttk.Toplevel):
         self.program_option.pack(fill='x', padx=0, pady=(0,10))
 
         ttk.Label(form_frame, text="YEAR LEVEL", font=('Default', 10)).pack(pady=(0,5), anchor='w')
-        year_level_values = ["No Selection", "First Year", "Second Year", "Third Year", "Fourth Year", "Irregular"]
+        year_level_values = ["No Selection", "First Year", "Second Year", "Third Year", "Fourth Year"]
         self.yearlevel_option = ttk.Combobox(form_frame, values=year_level_values, state='readonly')
         self.yearlevel_option.pack(fill='x', padx=0, pady=(0,20))
 
@@ -137,7 +137,7 @@ class StudentInfo(ttk.Toplevel):
         else:
             current_data["SEX"] = selected_sex
         if not stud_id or not firstname or not lastname:
-            return self.dialog("Student ID, First Name, and Last Name are required.", "Input Error")
+            return self.dialog("Student ID, First Name, and Last Name are required.\n Please try again.", "Input Error")
         if self.mode == 'new':
             if students.check(stud_id): return self.dialog("Student ID already exists!", "Error")
             students.insert_one(current_data)
