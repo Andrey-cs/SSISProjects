@@ -1,3 +1,3 @@
-from .program_info import ProgramInfo
-from .student_info import StudentInfo
-from .colleges_info import CollegeInfo
+from .programInfo import ProgramInfo
+from .studentInfo import StudentInfo
+from .collegesInfo import CollegeInfo
