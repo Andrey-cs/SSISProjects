@@ -312,7 +312,7 @@ class StudentInformationSystem(tk.Tk):
         
 		# if gusto mag delete og program pero naa pay isa ka data naka assign, error catched
         if any(s.get("PROGRAM") == program_id for s in students.get_all()):
-            return self.dialog(f"Cannot delete program {program_id}.\nIt is assigned to one or more students.\nPlease try again.", "Deletion Error")
+            return self.dialog(f"Cannot delete the Program {program_id}.\nIt is assigned to one or more students.\nPlease try again.", "Deletion Error")
         programs.remove(program_id)
         self.dialog(f"Successfully deleted Program {program_id}")
         self.refresh_student_table()
@@ -349,9 +349,9 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item: return
         college_id = self.college_table.item(selected_item[0], 'values')[0]
         if any(p.get("COLLEGE") == college_id for p in programs.get_all()):
-            return self.dialog(f"Cannot delete college {college_id}.\nIt is assigned to one or more programs.\n Please try again.", "Deletion Error")
+            return self.dialog(f"Cannot delete the College {college_id}.\nIt is assigned to one or more programs.\n Please try again.", "Deletion Error")
         colleges.remove(college_id)
-        self.dialog(f"Successfully deleted College {college_id}")
+        self.dialog(f"Successfully deleted the College {college_id}")
         self.refresh_program_table()
         self.refresh_college_table()
 
