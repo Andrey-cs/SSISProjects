@@ -19,14 +19,12 @@ class StudentTable(ttk.Treeview):
         self.heading('SEX', text='Sex')
         self.heading('PROGRAM', text='Program')
         self.heading('YEAR_LEVEL', text='Year Level')
-
         self.column('ID', width=100, anchor='center')
         self.column('FIRSTNAME', width=150, anchor='w')
         self.column('LASTNAME', width=150, anchor='w')
         self.column('SEX', width=80, anchor='center')
         self.column('PROGRAM', width=120, anchor='w') # dakoon para sa program codes/names
         self.column('YEAR_LEVEL', width=100, anchor='center')
-
 
 class ProgramTable(ttk.Treeview):
     def __init__(self, master):
@@ -38,12 +36,11 @@ class ProgramTable(ttk.Treeview):
             show='headings'
         )
         self.heading('CODE', text='Code')
-        self.heading('NAME', text='Program Name') 
+        self.heading('NAME', text='Program Name')
         self.heading('COLLEGE', text='College')
-        self.column('CODE', width=80, anchor='center') 
-        self.column('NAME', width=300, anchor='w')    # padakoon para sa long program names
-        self.column('COLLEGE', width=280, anchor='w') 
-
+        self.column('CODE', width=80, anchor='center')
+        self.column('NAME', width=300, anchor='w')   # padakoon para sa long program names
+        self.column('COLLEGE', width=280, anchor='w')
 
 class CollegeTable(ttk.Treeview):
     def __init__(self, master):
@@ -74,11 +71,9 @@ class StudentInformationSystem(tk.Tk):
         self.geometry(f'{window_width}x{window_height}+{position_right}+{position_top}')
         title_font_family = "Montserrat"
         available_fonts = list(tkfont.families())
-
-
         # para sa title header
         self.style.configure("WhiteTitle.TLabel", foreground="white", font=(title_font_family, 25, 'bold'))
-        main_title_label = ttk.Label(self, text="STUDENT  INFORMATION  SYSTEM", style="WhiteTitle.TLabel", anchor="center")
+        main_title_label = ttk.Label(self, text="STUDENT  INFORMATION  SYSTEM", style="WhiteTitle.TLabel", anchor="center")
         main_title_label.pack(pady=(10,5), fill='x')
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill='both', expand=True, padx=10, pady=(5,10))
@@ -86,7 +81,7 @@ class StudentInformationSystem(tk.Tk):
         self.program_frame = ttk.Frame(self.notebook)
         self.college_frame = ttk.Frame(self.notebook)
         
-		# para sa tabs
+        # para sa tabs
         self.notebook.add(self.students_frame, text="Students")
         self.notebook.add(self.program_frame, text="Programs")
         self.notebook.add(self.college_frame, text="Colleges")
@@ -102,7 +97,6 @@ class StudentInformationSystem(tk.Tk):
         self.student_buttons.pack(side='left', fill='y', padx=10, pady=10)
         self.student_label = ttk.Label(self.student_buttons, text="STUDENTS", font=('Default', 15, 'bold'))
         self.student_label.pack(padx=10, pady=10)
-
         # size sa buttons
         self.new_student_button = ttk.Button(self.student_buttons, text="CREATE STUDENT", width=20, bootstyle="success", command=self.new_student_button_callback)
         self.new_student_button.pack(padx=10, pady=10, fill='x', ipady=5)
@@ -128,7 +122,6 @@ class StudentInformationSystem(tk.Tk):
         self.program_buttons.pack(side='right', fill='y', padx=10, pady=10)
         self.program_label = ttk.Label(self.program_buttons, text="PROGRAMS", font=('Default', 15, 'bold'))
         self.program_label.pack(padx=10, pady=10)
-
         # function buttons for program
         self.new_program_button = ttk.Button(self.program_buttons, text="CREATE PROGRAM", width=20, bootstyle="success", command=self.new_program_button_callback)
         self.new_program_button.pack(padx=10, pady=10, fill='x', ipady=5)
@@ -154,7 +147,6 @@ class StudentInformationSystem(tk.Tk):
         self.college_buttons.pack(side='right', fill='y', padx=10, pady=10)
         self.college_label = ttk.Label(self.college_buttons, text="COLLEGES", font=('Default', 15, 'bold'))
         self.college_label.pack(padx=10, pady=10)
-
         # buttons for college tab
         self.new_college_button = ttk.Button(self.college_buttons, text="CREATE COLLEGE", width=20, bootstyle="success", command=self.new_college_button_callback)
         self.new_college_button.pack(padx=10, pady=10, fill='x', ipady=5)
@@ -179,19 +171,19 @@ class StudentInformationSystem(tk.Tk):
         toplevel = ttk.Toplevel(self)
         toplevel.title(title)
         toplevel.transient(self)
-        window_width = 350 
-        window_height = 180 
+        window_width = 350
+        window_height = 180
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         toplevel.geometry(f'{window_width}x{window_height}+{position_right}+{position_top}')
-        message_frame = ttk.Frame(toplevel, padding=(20, 20)) 
+        message_frame = ttk.Frame(toplevel, padding=(20, 20))
         message_frame.pack(fill='both', expand=True)
         msg_label = ttk.Label(message_frame, text=text, wraplength=window_width-60, justify='center', anchor='center')
-        msg_label.pack(expand=True, fill='both', pady=(0,15)) 
+        msg_label.pack(expand=True, fill='both', pady=(0,15))
         button_frame = ttk.Frame(message_frame)
-        button_frame.pack(side='bottom', pady=(0,5)) 
+        button_frame.pack(side='bottom', pady=(0,5))
         ok_button = ttk.Button(button_frame, text='Ok', bootstyle="primary", width=10, command=toplevel.destroy)
         ok_button.pack()
         toplevel.grab_set()
@@ -200,8 +192,8 @@ class StudentInformationSystem(tk.Tk):
         toplevel = ttk.Toplevel(self)
         toplevel.title(title)
         toplevel.transient(self)
-        window_width = 380 
-        window_height = 200 
+        window_width = 380
+        window_height = 200
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         position_top = int(screen_height / 2 - window_height / 2)
@@ -217,9 +209,9 @@ class StudentInformationSystem(tk.Tk):
         button_frame = ttk.Frame(message_frame)
         button_frame.pack(side='bottom', pady=(0,5))
         yes_button = ttk.Button(button_frame, text="Yes", bootstyle="primary", width=10, command=confirmed_action)
-        yes_button.pack(side='left', padx=(0,10)) 
+        yes_button.pack(side='left', padx=(0,10))
         cancel_button = ttk.Button(button_frame, text="Cancel", bootstyle="secondary", width=10, command=toplevel.destroy)
-        cancel_button.pack(side='right') 
+        cancel_button.pack(side='right')
         toplevel.grab_set()
 
     # FUNCTIONS PARA SA STUDENT TAB
@@ -244,7 +236,7 @@ class StudentInformationSystem(tk.Tk):
             student_program_code = student_record.get("PROGRAM")
             program_display_name = "NOT ENROLLED"
             if student_program_code and student_program_code in (valid_program_ids[1:] if valid_program_ids and valid_program_ids[0] == "No Selection" else valid_program_ids):
-                 program_display_name = student_program_code
+                program_display_name = student_program_code
             elif not student_program_code or student_program_code.strip() == "":
                 program_display_name = "NOT ASSIGNED"
             self.students_table.insert('', 'end', iid=f"student_{idx}", values=(
@@ -253,12 +245,13 @@ class StudentInformationSystem(tk.Tk):
                 program_display_name, student_record.get("YEAR LEVEL", "")))
 
     def new_student_button_callback(self): StudentInfo(self, 'new')
+
     def edit_student_button_callback(self):
         selected_item = self.students_table.selection()
         if not selected_item: return self.dialog("Please select a student from the table first.")
         values = self.students_table.item(selected_item[0], 'values')
         StudentInfo(self, 'edit', {"ID": values[0], "FIRSTNAME": values[1], "LASTNAME": values[2],
-                                   "SEX": values[3], "PROGRAM": values[4], "YEAR LEVEL": values[5]})
+                                    "SEX": values[3], "PROGRAM": values[4], "YEAR LEVEL": values[5]})
 
     def delete_student_data(self):
         selected_item = self.students_table.selection()
@@ -276,6 +269,7 @@ class StudentInformationSystem(tk.Tk):
 
     # FUNCTIONS PARA SA PROGRAM TAB
     def program_search(self, *args): self.refresh_program_table(self.program_key_search.get())
+
     def refresh_program_table(self, keyword=None):
         for item in self.program_table.get_children(): self.program_table.delete(item)
         all_program_data = programs.get_all()
@@ -296,25 +290,27 @@ class StudentInformationSystem(tk.Tk):
                 program_record.get("ID", "N/A"), program_record.get("NAME", ""), college_display_name))
 
     def new_program_button_callback(self): ProgramInfo(self, 'new')
+
     def edit_program_button_callback(self):
         selected_item = self.program_table.selection()
         if not selected_item: return self.dialog("Please select a program from the table first.")
         values = self.program_table.item(selected_item[0], 'values')
-        program_id_val, name_val, _ = values 
+        program_id_val, name_val, _ = values
         original_program_data = next((p for p in programs.get_all() if p.get("ID") == program_id_val), None)
         college_code_for_edit = original_program_data.get("COLLEGE", "") if original_program_data else ""
         ProgramInfo(self, 'edit', {"ID": program_id_val, "NAME": name_val, "COLLEGE": college_code_for_edit})
 
     def delete_program_data(self):
-        selected_item = self.program_table.selection();
+        selected_item = self.program_table.selection()
         if not selected_item: return
         program_id = self.program_table.item(selected_item[0], 'values')[0]
         
-		# if gusto mag delete og program pero naa pay isa ka data naka assign, error catched
-        if any(s.get("PROGRAM") == program_id for s in students.get_all()):
-            return self.dialog(f"Cannot delete the Program {program_id}.\nIt is assigned to one or more students.\nPlease try again.", "Deletion Error")
+        students_to_delete = [s for s in students.get_all() if s.get("PROGRAM") == program_id]
+        for stud in students_to_delete:
+            students.remove(stud.get("ID"))
+
         programs.remove(program_id)
-        self.dialog(f"Successfully deleted Program {program_id}")
+        self.dialog(f"Successfully deleted the Program {program_id} and all its associated students.")
         self.refresh_student_table()
         self.refresh_program_table()
 
@@ -326,6 +322,7 @@ class StudentInformationSystem(tk.Tk):
 
     # FUNCTIONS FOR COLLEGE TAB
     def college_search(self, *args): self.refresh_college_table(self.college_key_search.get())
+
     def refresh_college_table(self, keyword=None):
         self.college_table.delete(*self.college_table.get_children())
         data = colleges.get_all()
@@ -338,6 +335,7 @@ class StudentInformationSystem(tk.Tk):
                 college.get("ID", "N/A"), college.get("NAME", "")])
 
     def new_college_button_callback(self): CollegeInfo(self, 'new')
+
     def edit_college_button_callback(self):
         selected_item = self.college_table.selection()
         if not selected_item: return self.dialog("Please select a college from the table first.")
@@ -345,21 +343,31 @@ class StudentInformationSystem(tk.Tk):
         CollegeInfo(self, 'edit', {"ID": values[0], "NAME": values[1]})
 
     def delete_college_data(self):
-        selected_item = self.college_table.selection();
+        selected_item = self.college_table.selection()
         if not selected_item: return
         college_id = self.college_table.item(selected_item[0], 'values')[0]
-        if any(p.get("COLLEGE") == college_id for p in programs.get_all()):
-            return self.dialog(f"Cannot delete the College {college_id}.\nIt is assigned to one or more programs.\n Please try again.", "Deletion Error")
+
+        programs_to_delete = [p for p in programs.get_all() if p.get("COLLEGE") == college_id]
+
+        for prog in programs_to_delete:
+            program_id_to_delete = prog.get("ID")
+            students_in_program = [s for s in students.get_all() if s.get("PROGRAM") == program_id_to_delete]
+            for stud in students_in_program:
+                students.remove(stud.get("ID"))
+            
+            programs.remove(program_id_to_delete)
+
         colleges.remove(college_id)
-        self.dialog(f"Successfully deleted the College {college_id}")
-        self.refresh_program_table()
-        self.refresh_college_table()
+        self.dialog(f"Successfully deleted College {college_id} and all its associated programs and students.")
+        self.refresh_student_table() 
+        self.refresh_program_table() 
+        self.refresh_college_table() 
 
     def delete_college_button_callback(self):
         selected_item = self.college_table.selection()
         if not selected_item: return self.dialog("Please select a college from the table first.")
         college_id = self.college_table.item(selected_item[0], 'values')[0]
         self.confirmation(f"Do you want to delete college {college_id}?", self.delete_college_data)
-
+        
     def start(self):
         self.mainloop()
