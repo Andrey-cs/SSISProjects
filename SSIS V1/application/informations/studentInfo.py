@@ -54,7 +54,7 @@ class StudentInfo(ttk.Toplevel):
         self.program_option.pack(fill='x', padx=0, pady=(0,10))
 
         ttk.Label(form_frame, text="YEAR LEVEL", font=('Default', 10)).pack(pady=(0,5), anchor='w')
-        self.year_level_values = ["NO SELECTION", "FIRST YEAR", "SECOND YEAR", "THIRD YEAR", "FOURTH YEAR", "FIFTH YEAR", "IRREGULAR"]
+        self.year_level_values = ["NO SELECTION", "FIRST YEAR", "SECOND YEAR", "THIRD YEAR", "FOURTH YEAR"]
         self.yearlevel_option = ttk.Combobox(form_frame, values=self.year_level_values, state='readonly')
         self.yearlevel_option.pack(fill='x', padx=0, pady=(0,20))
 
