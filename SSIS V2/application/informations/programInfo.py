@@ -27,7 +27,6 @@ class ProgramInfo(tk.Toplevel):
         self.name_entry.pack(padx=0, fill='x', pady=(0,10))
         
         ttk.Label(form_frame, text="COLLEGE", font=('Default', 10)).pack(pady=(0,5), anchor='w')
-        # The colleges.get_college_ids() now fetches collegeCODEs from DB ---
         college_codes_list = [ccode for ccode in colleges.get_college_ids() if ccode] 
         if not college_codes_list or college_codes_list[0] != "No Selection":
             college_codes_list.insert(0, "No Selection")
@@ -48,7 +47,7 @@ class ProgramInfo(tk.Toplevel):
             self.name_entry.insert(0, self.data.get("programNAME", ''))
             current_college_code = self.data.get("collegeCODE", "No Selection")
             self.college_option.set(current_college_code if current_college_code in college_codes_list else "No Selection")
-        else: # New program
+        else:
             self.college_option.set("No Selection")
         self.grab_set()
 
@@ -63,7 +62,7 @@ class ProgramInfo(tk.Toplevel):
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         toplevel.geometry(f'{window_width}x{window_height}+{position_right}+{position_top}')     
-        outer_frame = ttk.Frame(toplevel) # Use a frame for better centering control
+        outer_frame = ttk.Frame(toplevel)
         outer_frame.pack(expand=True, fill='both', padx=10, pady=10)
         msg_label = ttk.Label(outer_frame, text=text, wraplength=window_width-60, justify='center', anchor='center')
         msg_label.pack(expand=True, fill='both', pady=(0,15))
@@ -74,8 +73,8 @@ class ProgramInfo(tk.Toplevel):
         toplevel.grab_set()
 
     def create_button_callback(self):
-        prog_id_val = self.id_entry.get().strip() # This is 'programID'
-        prog_name_val = self.name_entry.get().strip() # This is 'programNAME'
+        prog_id_val = self.id_entry.get().strip() 
+        prog_name_val = self.name_entry.get().strip() 
         selected_college_code = self.college_option.get()
         
         # Will handle the "No Selection" for collegeCODE, will store as None if not one is selected for the Database
@@ -93,10 +92,10 @@ class ProgramInfo(tk.Toplevel):
             if hasattr(self.master, 'refresh_program_table'): self.master.refresh_program_table()
             if hasattr(self.master, 'refresh_student_table'): self.master.refresh_student_table()
             self.destroy()
-        else: # Edit mode
+        else: 
             original_prog_id = self.data.get('programID')
             
-            # Check for the changes
+            # Check for the new changes
             original_name = self.data.get("programNAME", "")
             original_college = self.data.get("collegeCODE") 
 

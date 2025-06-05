@@ -80,7 +80,6 @@ class CollegeInfo(tk.Toplevel):
             if hasattr(self.master, 'refresh_program_table'): self.master.refresh_program_table()
             self.destroy()
         else: 
-            # In edit mode, collegeCODE (ID) is from self.data and is not changed by the form
             original_college_code = self.data.get('collegeCODE')
             
             if self.data and original_college_code == college_code_val and self.data.get('collegeNAME') == college_name_val:
