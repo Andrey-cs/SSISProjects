@@ -118,7 +118,7 @@ class StudentInfo(ttk.Toplevel):
         if not (len(stud_id_val) == 9 and stud_id_val[4] == '-' and stud_id_val[:4].isdigit() and stud_id_val[5:].isdigit()):
             return self.dialog("Invalid Student ID format.\nExpected: YYYY-NNNN (e.g., 2023-0001)", "Input Error") # Completed the error message
         
-        # --- CRITICAL CHANGE: Data dictionary keys match SQL column names for DB operations ---
+
         current_data_payload = {
             "studentID": stud_id_val, 
             "FIRSTNAME": firstname_val, 
@@ -147,23 +147,19 @@ class StudentInfo(ttk.Toplevel):
             changed = False
             original_student_id = self.data.get("studentID") # ID doesn't change
 
-            # Compare current form values (for editable fields) with original data from self.data
+
             if self.data:
                 if firstname_val != self.data.get("FIRSTNAME", "") or \
                    lastname_val != self.data.get("LASTNAME", "") or \
                    db_program_code != self.data.get("programCODE") or \
                    db_year_level != self.data.get("YEAR LEVEL"):
                     changed = True
-                # Note: SEX is not editable in the form in edit mode, so it's not part of "changed" check from form.
-                # The original requirement "Also e check if ID kay mag match, just in case." is implicitly handled
-                # as we are fetching by ID for edit and the ID field is disabled.
             else: 
                 changed = True # Should not happen in edit mode if self.data is always present
             
             if not changed: 
                 return self.dialog("No changes were made to the fields.\nPlease try again.", "Information")
 
-            # Payload for edit should use the original studentID
             edit_payload = {
                 "studentID": original_student_id, 
                 "FIRSTNAME": firstname_val,
