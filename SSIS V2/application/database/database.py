@@ -195,7 +195,7 @@ COLLEGES_SQL_COLS = ["collegeCODE", "collegeNAME"]
 PROGRAMS_SQL_COLS = ["programID", "programNAME", "collegeCODE"]
 STUDENTS_SQL_COLS = ["studentID", "FIRSTNAME", "LASTNAME", "SEX", "programCODE", "YEAR LEVEL"]
 
-# example ni sha
+# example ni sha for Version 2
 colleges = Database(
     table_name='colleges', 
     pk_col_name='collegeCODE',
