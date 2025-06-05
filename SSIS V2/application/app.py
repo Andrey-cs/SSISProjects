@@ -10,7 +10,6 @@ class StudentTable(ttk.Treeview):
             master=master,
             bootstyle='info',
             height=12,
-            # Treeview columns can have generic names for display
             columns=('ID_Display', 'FIRSTNAME_Display', 'LASTNAME_Display', 'SEX_Display', 'PROGRAM_Display', 'YEAR_LEVEL_Display'),
             show='headings'
         )
@@ -346,16 +345,9 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return
         item_values = self.program_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get program ID from table.", "Error")
-        program_id_val = item_values[0] # This is programID
-        
-        # Original comment from docx:
-        # if gusto mag delete og program pero naa pay isa ka data naka assign, error catched
-        # The logic below is for Python-driven cascading delete.
-        # If ON DELETE CASCADE is set in DB for students.programCODE -> programs.programID,
-        # the following student deletion loop is not strictly needed.
+        program_id_val = item_values[0] 
         
         students_deleted_count = 0
-        # --- CRITICAL CHANGE: Cascading delete now targets students by programCODE ---
         students_to_delete = students.get_all(filter_criteria={"programCODE": program_id_val})
         if students_to_delete: # students_to_delete is a list of dicts
             for student_dict in students_to_delete:
@@ -417,17 +409,9 @@ class StudentInformationSystem(tk.Tk):
         if not item_values: return self.dialog("Cannot get college ID from table.", "Error")
         college_id_val = item_values[0] # This is collegeCODE
 
-        # Original comment from docx:
-        # if any(p.get("COLLEGE") == college_id for p in programs.get_all()):
-        # (Note: Original get("COLLEGE") would now be get("collegeCODE"))
-        # The logic below is for Python-driven cascading delete.
-        # If ON DELETE CASCADE is set in DB for programs.collegeCODE -> colleges.collegeCODE
-        # AND students.programCODE -> programs.programID, the following loops are not strictly needed.
-
         programs_deleted_count = 0
         students_deleted_total_count = 0
-
-        # --- CRITICAL CHANGE: Cascading delete now identifies programs by collegeCODE ---
+        
         programs_to_delete = programs.get_all(filter_criteria={"collegeCODE": college_id_val})
         if programs_to_delete:
             for prog_dict in programs_to_delete:
