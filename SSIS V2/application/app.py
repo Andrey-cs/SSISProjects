@@ -235,7 +235,7 @@ class StudentInformationSystem(tk.Tk):
         
         all_student_data = students.get_all(keyword=keyword) 
 
-        for idx, student_record in enumerate(all_student_data): # student_record keys are now SQL column names
+        for idx, student_record in enumerate(all_student_data):
             if not isinstance(student_record, dict): continue
             
             program_code_val = student_record.get("programCODE", "NOT ASSIGNED") # Use SQL column name
@@ -247,7 +247,7 @@ class StudentInformationSystem(tk.Tk):
                 student_record.get("FIRSTNAME", ""),
                 student_record.get("LASTNAME", ""), 
                 student_record.get("SEX", ""),
-                program_code_val, # Display programCODE directly or map to name if desired
+                program_code_val, 
                 student_record.get("YEAR LEVEL", "")))
 
     def new_student_button_callback(self): StudentInfo(self, 'new')
@@ -255,16 +255,13 @@ class StudentInformationSystem(tk.Tk):
     def edit_student_button_callback(self):
         selected_item_iid = self.students_table.selection()
         if not selected_item_iid: return self.dialog("Please select a student from the table first.")
-        
-        # The values from treeview might be display-formatted. Fetch full record by ID.
-        # Assuming the first value in treeview row is the studentID
+
         item_values = self.students_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get student ID from table.", "Error")
         student_id_val = item_values[0]
 
-        # --- CRITICAL CHANGE: Fetch specific student data using SQL column names for editing ---
+
         student_data_for_edit = None
-        # Ideally, a students.get_one(student_id_val) method would be better.
         all_stud_records = students.get_all(filter_criteria={"studentID": student_id_val})
         if all_stud_records and len(all_stud_records) > 0:
             student_data_for_edit = all_stud_records[0]
@@ -281,7 +278,7 @@ class StudentInformationSystem(tk.Tk):
         
         item_values = self.students_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get student ID from table.", "Error")
-        student_id_val = item_values[0] # This is studentID
+        student_id_val = item_values[0] 
 
         if students.remove(student_id_val):
             self.dialog(f"Successfully deleted Student #{student_id_val}")
@@ -295,7 +292,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return self.dialog("Please select a student from the table first.")
         item_values = self.students_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get student ID from table.", "Error")
-        student_id_val = item_values[0] # This is studentID
+        student_id_val = item_values[0] 
         self.confirmation(f"Do you want to delete student #{student_id_val}?", self.delete_student_data)
 
     # FUNCTIONS PARA SA PROGRAM TAB
@@ -310,7 +307,7 @@ class StudentInformationSystem(tk.Tk):
         all_colleges_data = colleges.get_all()
         college_map = {c.get("collegeCODE"): c.get("collegeNAME", "Unknown College") for c in all_colleges_data if isinstance(c, dict)}
 
-        for idx, program_record in enumerate(all_program_data): # program_record keys are SQL column names
+        for idx, program_record in enumerate(all_program_data): 
             if not isinstance(program_record, dict): continue
             
             college_code_val = program_record.get("collegeCODE")
@@ -328,7 +325,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return self.dialog("Please select a program from the table first.")
         item_values = self.program_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get program ID from table.", "Error")
-        program_id_val = item_values[0] # This is programID
+        program_id_val = item_values[0] 
 
         program_data_for_edit = None
         all_prog_records = programs.get_all(filter_criteria={"programID": program_id_val})
@@ -349,7 +346,7 @@ class StudentInformationSystem(tk.Tk):
         
         students_deleted_count = 0
         students_to_delete = students.get_all(filter_criteria={"programCODE": program_id_val})
-        if students_to_delete: # students_to_delete is a list of dicts
+        if students_to_delete: 
             for student_dict in students_to_delete:
                 if students.remove(student_dict.get("studentID")):
                     students_deleted_count += 1
@@ -368,7 +365,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return self.dialog("Please select a program from the table first.")
         item_values = self.program_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get program ID from table.", "Error")
-        program_id_val = item_values[0] # This is programID
+        program_id_val = item_values[0] 
         self.confirmation(f"Do you want to delete Program {program_id_val} and all its associated students? This action cannot be undone.", self.delete_program_data)
 
     # FUNCTIONS FOR COLLEGE TAB
@@ -377,7 +374,7 @@ class StudentInformationSystem(tk.Tk):
     def refresh_college_table(self, keyword=None):
         self.college_table.delete(*self.college_table.get_children())
         all_college_data = colleges.get_all(keyword=keyword)
-        for idx, college_record in enumerate(all_college_data): # college_record keys are SQL column names
+        for idx, college_record in enumerate(all_college_data): 
             if not isinstance(college_record, dict): continue
             self.college_table.insert('', 'end', iid=f"college_{idx}", values=[
                 college_record.get("collegeCODE", "N/A"), 
@@ -390,8 +387,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return self.dialog("Please select a college from the table first.")
         item_values = self.college_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get college ID from table.", "Error")
-        college_id_val = item_values[0] # This is collegeCODE
-
+        college_id_val = item_values[0] 
         college_data_for_edit = None
         all_coll_records = colleges.get_all(filter_criteria={"collegeCODE": college_id_val})
         if all_coll_records and len(all_coll_records) > 0:
@@ -407,7 +403,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return
         item_values = self.college_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get college ID from table.", "Error")
-        college_id_val = item_values[0] # This is collegeCODE
+        college_id_val = item_values[0] 
 
         programs_deleted_count = 0
         students_deleted_total_count = 0
@@ -442,7 +438,7 @@ class StudentInformationSystem(tk.Tk):
         if not selected_item_iid: return self.dialog("Please select a college from the table first.")
         item_values = self.college_table.item(selected_item_iid[0], 'values')
         if not item_values: return self.dialog("Cannot get college ID from table.", "Error")
-        college_id_val = item_values[0] # This is collegeCODE
+        college_id_val = item_values[0] 
         self.confirmation(f"Do you want to delete College {college_id_val} and all its associated programs and students? This action cannot be undone.", self.delete_college_data)
     
     def start(self):
